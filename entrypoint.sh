@@ -9,7 +9,7 @@ YELLOW='\033[0;33m'
 PURPLE='\033[0;34m'
 
 # Install the broken-link-checker module globally on the docker instance
-npm i -g broken-link-checker -s
+npm i -g broken-link-checker-local -s
 
 echo -e "$PURPLE=== BROKEN LINK CHECKER ===$NC"
 echo -e "Running broken link checker on URL: $GREEN $1 $NC"
@@ -38,7 +38,7 @@ echo -e "Configuration: \n Honor robot exclusions: $GREEN$2$NC, \n Exclude URLs 
 
 # Create command and remove extra quotes
 # Put result in variable to be able to iterate on it later
-OUTPUT="$(blc "$1" $EXCLUDE $SET_FOLLOW $SET_RECURSIVE -v | sed 's/"//g')"
+OUTPUT="$(blcl "$1" $EXCLUDE $SET_FOLLOW $SET_RECURSIVE -v | sed 's/"//g')"
 
 # Count lines of output
 TOTAL_COUNT="$(wc -l <<< "$OUTPUT")"
